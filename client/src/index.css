@@ -1,0 +1,359 @@
+/*
+ * CAO NGUYÊN MẬT — "Mùa Hoa Trắng" Editorial Journal theme
+ * Paper-ivory background, ink-dark serif text, amber honey accents.
+ * Fonts: Cormorant Garamond (display), Noto Serif Display (body), Jost (labels/UI).
+ * Color journey: ivory paper → coffee-blossom white → highland green →
+ * basalt earth brown → honey amber → deep night green (ending/brand).
+ */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  /* Brand palette */
+  --color-ivory: var(--ivory);
+  --color-ivory-deep: var(--ivory-deep);
+  --color-ink: var(--ink);
+  --color-honey: var(--honey);
+  --color-honey-soft: var(--honey-soft);
+  --color-moss: var(--moss);
+  --color-moss-deep: var(--moss-deep);
+  --color-earth: var(--earth);
+  --color-night: var(--night);
+  --color-night-soft: var(--night-soft);
+  --color-sage: var(--sage);
+  --font-display: "Cormorant Garamond", "Noto Serif Display", serif;
+  --font-body: "Noto Serif Display", Georgia, serif;
+  --font-label: "Jost", sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Brand palette tokens */
+  --ivory: oklch(0.965 0.012 85);        /* #F7F3EC warm paper */
+  --ivory-deep: oklch(0.935 0.016 82);   /* deeper paper */
+  --ink: oklch(0.255 0.012 75);          /* #2B2720 warm ink */
+  --honey: oklch(0.66 0.13 62);          /* #C8862B honey amber */
+  --honey-soft: oklch(0.85 0.07 75);     /* soft amber */
+  --moss: oklch(0.45 0.05 150);          /* #3E5A45 highland green */
+  --moss-deep: oklch(0.36 0.05 150);
+  --earth: oklch(0.45 0.09 45);          /* #7A4A2B basalt earth */
+  --night: oklch(0.25 0.03 165);         /* #1D2A24 deep night green */
+  --night-soft: oklch(0.32 0.035 165);
+  --sage: oklch(0.68 0.04 140);          /* #8A9A7B leaf green */
+
+  --background: var(--ivory);
+  --foreground: var(--ink);
+  --card: oklch(0.985 0.008 88);
+  --card-foreground: var(--ink);
+  --popover: var(--ivory);
+  --popover-foreground: var(--ink);
+  --primary: var(--moss);
+  --primary-foreground: var(--ivory);
+  --secondary: var(--ivory-deep);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.925 0.012 85);
+  --muted-foreground: oklch(0.48 0.015 75);
+  --accent: var(--honey);
+  --accent-foreground: oklch(0.99 0.005 88);
+  --destructive: oklch(0.55 0.19 27);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.88 0.014 82);
+  --input: oklch(0.88 0.014 82);
+  --ring: var(--honey);
+  --chart-1: var(--honey);
+  --chart-2: var(--moss);
+  --chart-3: var(--earth);
+  --chart-4: var(--sage);
+  --chart-5: var(--honey-soft);
+  --sidebar: var(--ivory);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--moss);
+  --sidebar-primary-foreground: var(--ivory);
+  --sidebar-accent: var(--ivory-deep);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: oklch(0.88 0.014 82);
+  --sidebar-ring: var(--honey);
+}
+
+.dark {
+  --background: var(--night);
+  --foreground: var(--ivory);
+  --card: var(--night-soft);
+  --card-foreground: var(--ivory);
+  --popover: var(--night-soft);
+  --popover-foreground: var(--ivory);
+  --primary: var(--honey);
+  --primary-foreground: var(--night);
+  --secondary: var(--night-soft);
+  --secondary-foreground: var(--ivory);
+  --muted: oklch(0.32 0.03 165);
+  --muted-foreground: oklch(0.72 0.02 160);
+  --accent: var(--honey);
+  --accent-foreground: var(--night);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--honey);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  ::selection {
+    background: color-mix(in oklch, var(--honey) 35%, transparent);
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+      max-width: 1200px;
+    }
+  }
+
+  /* Editorial label / kicker */
+  .kicker {
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--honey);
+    font-weight: 500;
+  }
+
+  .display {
+    font-family: var(--font-display);
+  }
+
+  /* Watermark chapter numeral */
+  .chapter-numeral {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: color-mix(in oklch, var(--foreground) 7%, transparent);
+    line-height: 0.85;
+    user-select: none;
+  }
+
+  /* Editorial spine: continuous amber margin rule on desktop */
+  @media (min-width: 1024px) {
+    .editorial-spine::after {
+      content: "";
+      position: fixed;
+      left: 3.6rem;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      z-index: 30;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        color-mix(in oklch, var(--honey) 40%, transparent) 12%,
+        color-mix(in oklch, var(--honey) 40%, transparent) 88%,
+        transparent
+      );
+    }
+  }
+
+  /* Chapter amber rule with blossom punctuation */
+  .chapter-rule {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  .chapter-rule::before {
+    content: "";
+    width: 3.5rem;
+    height: 1px;
+    background: color-mix(in oklch, var(--honey) 60%, transparent);
+  }
+
+  /* Archival specimen plate (transparency dossier) */
+  .specimen-plate {
+    border: 1px solid color-mix(in oklch, var(--honey) 45%, transparent);
+    background:
+      linear-gradient(var(--card), var(--card));
+    position: relative;
+  }
+  .specimen-plate::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid color-mix(in oklch, var(--ink) 14%, transparent);
+    pointer-events: none;
+  }
+  .specimen-plate > * {
+    position: relative;
+  }
+
+  /* Quiet literary imprint lockup */
+  .imprint {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  /* Vertical honey line motif */
+  .honey-line {
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      color-mix(in oklch, var(--honey) 55%, transparent) 15%,
+      color-mix(in oklch, var(--honey) 55%, transparent) 85%,
+      transparent
+    );
+  }
+
+  /* Framed photo like a journal insert */
+  .photo-frame {
+    background: oklch(0.99 0.005 88);
+    padding: 0.55rem;
+    box-shadow:
+      0 1px 2px oklch(0.25 0.012 75 / 8%),
+      0 10px 30px -12px oklch(0.25 0.012 75 / 16%);
+  }
+
+  /* Subtle paper grain */
+  .paper-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .drop-cap::first-letter {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 3.6em;
+    float: left;
+    line-height: 0.82;
+    padding-right: 0.12em;
+    padding-top: 0.06em;
+    color: var(--honey);
+  }
+  .quote-serif {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+  }
+  .font-label {
+    font-family: var(--font-label);
+  }
+}
+
+/* Reveal-on-scroll animations (respects reduced motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+      transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .reveal.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-img {
+    opacity: 0;
+    transform: scale(1.03);
+    transition:
+      opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1),
+      transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .reveal-img.reveal-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-img {
+    opacity: 1;
+    transform: none;
+  }
+}
